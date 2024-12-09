@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  // State to hold the quote
+  const [quote, setQuote] = useState<any>(null);
+  console.log("quote:", quote);
+
+  // Function to fetch a random quote
+  const fetchQuote = async () => {
+    try {
+      const response = await fetch(
+        "https://api.api-ninjas.com/v1/quotes?category=",
+        {
+          headers: {
+            "X-Api-Key": "cJRk+VCTTh0q5qCjOPGkJg==qTuAm4AS5ZK9JNCp",
+          },
+        }
+      );
+      const data = await response.json();
+      console.log("data:", data);
+
+      setQuote(data[0]); // Set the fetched quote
+    } catch (error) {
+      console.error("Error fetching quote:", error);
+      setQuote("Failed to fetch a quote"); // Fallback quote
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+    <div className="App">
+      <h1>Quote of the Day</h1>
+
+      <div className="quote-container">
         <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+          {quote
+            ? `"${quote?.quote}"`
+            : "Click the button to get a random quote!"}
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <button onClick={fetchQuote} className="quote-button">
+        Get Random Quote
+      </button>
+    </div>
+  );
 }
 
-export default App
+export default App;

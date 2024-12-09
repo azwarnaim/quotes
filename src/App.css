@@ -1,42 +1,86 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Global Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #6e7dff, #e2a1ff);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App {
+  /* display: flex; */
+  /* justify-content: center;
+  align-items: center; */
   text-align: center;
+  height: 100vh;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.content {
+  text-align: center;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.title {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.quote-container {
+  margin: 20px 0;
+}
+
+.quote-text {
+  font-size: 1.25rem;
+  font-style: italic;
+  color: #555;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.quote-button {
+  background-color: #ff6347; /* Tomato */
+  color: white;
+  font-size: 1.1rem;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-top: 20px;
+}
+
+.quote-button:hover {
+  background-color: #e5533f; /* Darker tomato */
+  transform: scale(1.05);
+}
+
+.quote-button:focus {
+  outline: none;
+}
+
+@media (max-width: 600px) {
+  .content {
+    padding: 20px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .quote-text {
+    font-size: 1rem;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .quote-button {
+    font-size: 1rem;
+    padding: 10px 25px;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
