@@ -4,7 +4,6 @@ import "./App.css";
 function App() {
   // State to hold the quote
   const [quote, setQuote] = useState<any>(null);
-  console.log("quote:", quote);
 
   // Function to fetch a random quote
   const fetchQuote = async () => {
@@ -18,7 +17,6 @@ function App() {
         }
       );
       const data = await response.json();
-      console.log("data:", data);
 
       setQuote(data[0]); // Set the fetched quote
     } catch (error) {
